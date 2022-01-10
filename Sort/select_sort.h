@@ -11,11 +11,13 @@ namespace msh
         int __n = __v.size();
         for (int i = 0; i < __n; ++i)
         {
+            _Tp __value = __v[i];
             int __index = i;
             for (int j = i + 1; j < __n; ++j)
             {
-                if (__v[j] < __v[i])
+                if (__v[j] < __value)
                 {
+                    __value = __v[j];
                     __index = j;
                 }
             }
