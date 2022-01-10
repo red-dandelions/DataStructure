@@ -11,9 +11,12 @@ namespace msh
         int __n = __v.size();
         for (int i = 0; i < __n; ++i)
         {
-            for (int j = 0; j < n - i; ++j)
+            for (int j = 1; j < __n - i; ++j)
             {
-                if ()
+                if (__v[j - 1] > __v[j])
+                {
+                    std::swap(__v[j - 1], __v[j]);
+                }
             }
         }
     }
