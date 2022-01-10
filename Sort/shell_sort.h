@@ -9,7 +9,7 @@ namespace msh
     void shellSort(std::vector<_Tp> &__v)
     {
         int __n = __v.size();
-        for (int __d = __v >> 1; __d >= 1; __d >>= 1)
+        for (int __d = __n >> 1; __d >= 1; __d >>= 1)
         {
             for (int i = __d; i < __n; ++i)
             {
