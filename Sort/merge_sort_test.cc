@@ -19,7 +19,7 @@ int main()
     }
     cout << endl;
 
-    msh::mergeSort(__arr, 0, __arr.size() - 1);
+    msh::mergeSort(__arr, 0, __arr.size());
     for (const int &val : __arr)
     {
         cout << val << " ";

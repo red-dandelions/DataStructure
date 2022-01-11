@@ -9,7 +9,7 @@ namespace msh
     static void merge(std::vector<_Tp> &__v, int __left, int __mid, int __right)
     {
         int __len1 = __mid  - __left;
-        int __len2 = __right - __mid + 1;
+        int __len2 = __right - __mid;
         _Tp __a[__len1];
         _Tp __b[__len2];
         for (int i = 0; i < __len1; ++i)
@@ -44,7 +44,7 @@ namespace msh
             }
             else
             {
-                __v[__index] = __a[__j];
+                __v[__index] = __b[__j];
                 ++__j;
             }
             ++__index;
@@ -54,7 +54,7 @@ namespace msh
     template <typename _Tp>
     void mergeSort(std::vector<_Tp> &__v, int __start, int __end)
     {
-        if (__start < __end)
+        if (__start < __end - 1)
         {
             int __mid = __start + ((__end - __start) >> 1);
             mergeSort(__v, __start, __mid);
