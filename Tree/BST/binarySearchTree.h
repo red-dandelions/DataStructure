@@ -55,7 +55,7 @@ namespace msh
         bstNode<_Tp> *__tmp = __root;
         if (__tmp == nullptr)
         {
-            __root = new bstNode(__value);
+            __root = new bstNode<_Tp>(__value);
             return true;
         }
 
@@ -76,7 +76,7 @@ namespace msh
                 __tmp = __tmp->__left;
             }
         }
-        __tmp = new bstNode(__value);
+        __tmp = new bstNode<_Tp>(__value);
         if (__x->__value < __value)
         {
             __x->__right = __tmp;
@@ -113,7 +113,7 @@ namespace msh
     template <typename _Tp>
     void binarySearchTree<_Tp>::inorderTraverse()
     {
-        std::stack<bstNode *> st;
+        std::stack<bstNode<_Tp> *> st;
         bstNode<_Tp> *__tmp = __root;
         while (__tmp || !st.empty())
         {
