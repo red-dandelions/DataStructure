@@ -11,8 +11,8 @@ namespace msh
     struct Node
     {
         _Tp __value;
-        Node<T> *__left;
-        Node<T> *__right;
+        Node<_Tp> *__left;
+        Node<_Tp> *__right;
         Node() : __left(nullptr), __right(nullptr) {}
         Node(_Tp value) : __value(value), __left(nullptr), __right(nullptr) {}
     };
@@ -49,7 +49,7 @@ namespace msh
         }
         int __index = 0;
         Node<_Tp> *__tmp = new Node<_Tp>(__v[__index]);
-        queue<Node<_Tp>*> __q;
+        queue<Node<_Tp> *> __q;
         __q.push(__tmp);
         while (!__q.empty())
         {
@@ -111,7 +111,7 @@ namespace msh
         {
             return;
         }
-        std::stack<Node<_Tp>*> __st;
+        std::stack<Node<_Tp> *> __st;
         Node<_Tp> *__tmp = __root;
         while (__tmp || !__st.empty())
         {
@@ -123,7 +123,7 @@ namespace msh
             }
             __tmp = __st.top();
             __st.pop();
-            
+
             __tmp = __tmp->__right;
         }
         std::cout << std::endl;
