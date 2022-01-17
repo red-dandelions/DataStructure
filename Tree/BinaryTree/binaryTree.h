@@ -48,9 +48,9 @@ namespace msh
             return;
         }
         int __index = 0;
-        Node<_Tp> *__tmp = new Node<_Tp>(__v[__index]);
+        __root = new Node<_Tp>(__v[__index]);
         std::queue<Node<_Tp> *> __q;
-        __q.push(__tmp);
+        __q.push(__root);
         while (!__q.empty())
         {
             int __len = __q.size();
@@ -183,13 +183,14 @@ namespace msh
             return;
         }
         std::stack<Node<_Tp> *> __st;
-        Node<_Tp> *__tmp = __root, *__prev = nullptr;
+        Node<_Tp> *__tmp = __root;
+        Node<_Tp> *__prev = nullptr;
         while (__tmp || !__st.empty())
         {
             while (__tmp)
             {
                 __st.push(__tmp);
-                __tmp = __tmp->__right;
+                __tmp = __tmp->__left;
             }
             __tmp = __st.top();
             __st.pop();
