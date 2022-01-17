@@ -49,7 +49,7 @@ namespace msh
         }
         int __index = 0;
         Node<_Tp> *__tmp = new Node<_Tp>(__v[__index]);
-        queue<Node<_Tp> *> __q;
+        std::queue<Node<_Tp> *> __q;
         __q.push(__tmp);
         while (!__q.empty())
         {
