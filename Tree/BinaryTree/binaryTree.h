@@ -54,7 +54,7 @@ namespace msh
         while (!__q.empty())
         {
             int __len = __q.size();
-            while (__len)
+            while (__len--)
             {
                 Node<_Tp> *__cur = __q.front();
                 __q.pop();
