@@ -183,7 +183,7 @@ namespace msh
             return;
         }
         std::stack<Node<_Tp> *> __st;
-        Node<_Tp> *__tmp = __root, __prev = nullptr;
+        Node<_Tp> *__tmp = __root, *__prev = nullptr;
         while (__tmp || !__st.empty())
         {
             while (__tmp)
