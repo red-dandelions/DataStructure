@@ -33,10 +33,10 @@ int main()
     {
         cout << "erase: " << __arr[i] << endl;
         __tree.erase(__arr[i]);
-        __tree.inorderTranverse();
+        __tree.inorderTraverse();
     }
     cout << endl;
-    __tree.inorderTranverse();
+    __tree.inorderTraverse();
 
     return 0;
 }

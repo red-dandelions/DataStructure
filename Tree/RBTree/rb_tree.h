@@ -65,7 +65,6 @@ namespace msh
         void __erase_fixup(RB_TREE_NODE *node);
         void __rotate_left(RB_TREE_NODE *node);
         void __rotate_right(RB_TREE_NODE *node);
-        void __inorderTraverse(RB_TREE_NODE* node);
         void __destroy(RB_TREE_NODE *node);
     };
 
@@ -92,20 +91,20 @@ namespace msh
 
     RB_TREE_NODE* RB_TREE::find(int __key)
     {
-        RB_TREE_NODE *__index = __root;
-        while (__index != __nullNode)
+        RB_TREE_NODE *__node = __root;
+        while (__node != __nullNode)
         {
-            if (__index->__key == __key)
+            if (__node->__key == __key)
             {
-                return __index;
+                return __node;
             }
-            else if (__index->__key < __key)
+            else if (__node->__key < __key)
             {
-                __index = __index->__right;
+                __node = __node->__right;
             }
             else
             {
-                __index = __index->__left;
+                __node = __node->__left;
             }
         }
         return nullptr;
@@ -116,7 +115,7 @@ namespace msh
         RB_TREE_NODE *__x = __root;
         RB_TREE_NODE *__y = __nullNode;
 
-        //找到插入节点的父节点
+        //找到插入节点的父节点__y
         while (__x != __nullNode)
         {
             __y = __x;
@@ -274,10 +273,9 @@ namespace msh
             }
             __x = __st.top();
             __st.pop();
-            std::cout << __x->__key << " ";
+            std::cout << "key:" << __x->__key << " value: " << __x->__value << std::endl;
             __x = __x->__right;
         }
-        std::cout << std::endl;
     }
 
     void RB_TREE::__insert_fixup(RB_TREE_NODE *__insert_node)
@@ -293,7 +291,7 @@ namespace msh
                 {
                     //case 1: uncle节点是红的话， 父节点和uncle节点变为黑，上移insert节点为爷爷节点
                     __insert_node->__parent->__color = BLACK;
-                    __uncle->__parent->__color = BLACK;
+                    __uncle->__color = BLACK;
                     __insert_node->__parent->__parent->__color = RED;
                     __insert_node = __insert_node->__parent->__parent;
                 }
@@ -317,7 +315,7 @@ namespace msh
                 {
                     //case 1: 父节点和uncle节点变为黑，上移insert节点
                     __insert_node->__parent->__color = BLACK;
-                    __uncle->__parent->__color = BLACK;
+                    __uncle->__color = BLACK;
                     __insert_node->__parent->__parent->__color = RED;
                     __insert_node = __insert_node->__parent->__parent;
                 }
@@ -454,17 +452,6 @@ namespace msh
         }
         __y->__right = __x;
         __x->__parent = __y;
-    }
-
-    void RB_TREE::__inorderTraverse(RB_TREE_NODE *__x)
-    {
-        if (__x == __nullNode)
-        {
-            return;
-        }
-        __inorderTraverse(__x->__left);
-        std::cout << __x->__key << " ";
-        __inorderTraverse(__x->__right);
     }
 
     void RB_TREE::__destroy(RB_TREE_NODE *__x)
